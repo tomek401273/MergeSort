@@ -1,11 +1,10 @@
 package com.merge.sort.parser;
 
+import com.merge.sort.file.parser.FileParser;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FileParserTest {
 
@@ -18,7 +17,7 @@ class FileParserTest {
         inputList.add("12 101 1 12");
         // when
         FileParser fileParser= new FileParser();
-        List<List<Integer>> result = fileParser.parse(inputList);
+        List<Integer[]> result = fileParser.parse(inputList);
         System.out.println(result);
         // then
     }

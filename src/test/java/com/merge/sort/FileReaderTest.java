@@ -1,6 +1,7 @@
 package com.merge.sort;
 
 import com.merge.sort.config.AppConfig;
+import com.merge.sort.file.reader.FileReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

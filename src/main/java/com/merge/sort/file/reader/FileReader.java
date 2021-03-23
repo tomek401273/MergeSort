@@ -1,4 +1,4 @@
-package com.merge.sort;
+package com.merge.sort.file.reader;
 
 import java.io.IOException;
 import java.nio.file.Files;
