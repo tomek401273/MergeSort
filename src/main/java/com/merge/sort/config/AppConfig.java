@@ -4,14 +4,24 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class AppConfig {
-    private static Path inputFile = Paths.get("src/main/resources");
+    private static Path root = Paths.get("src/main/resources");
+    private static Path inputFilePath;
+    private static Path outputFilePath;
 
-    public static Path getInputFilePath(){
-        return inputFile.resolve("input/test/input-test1.txt");
+    public static void setInputFilePath(String stringPath) {
+        inputFilePath = root.resolve(stringPath);
     }
 
-    public static Path getOutputPath(){
-        return inputFile.resolve("output/test/output-test1.txt");
+    public static void setOutputFilePath(String stringPath) {
+        outputFilePath = root.resolve(stringPath);
+    }
+
+    public static Path getInputFilePath() {
+        return inputFilePath;
+    }
+
+    public static Path getOutputPath() {
+        return outputFilePath;
     }
 
 

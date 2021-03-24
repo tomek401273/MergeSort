@@ -12,6 +12,9 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) {
+        AppConfig.setInputFilePath("input/test/input-test1.txt");
+        AppConfig.setOutputFilePath("output/test/output-test1.txt");
+
         FileReader fileReader= new FileReader();
         List<String> inputList= fileReader.getInputLines(AppConfig.getInputFilePath());
         FileParser fileParser= new FileParser();
