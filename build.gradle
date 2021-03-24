@@ -1,9 +1,11 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
-group 'org.example'
+group 'com.merge.sort'
 version '1.0-SNAPSHOT'
+mainClassName='com.merge.sort.App'
 
 repositories {
     mavenCentral()
