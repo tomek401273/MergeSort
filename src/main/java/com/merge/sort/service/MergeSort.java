@@ -3,11 +3,11 @@ import java.util.Arrays;
 
 public class MergeSort {
 
-    public void sort(int[] inputArray) {
+    public void sort(Integer[] inputArray) {
         sort(inputArray, 0, inputArray.length - 1);
     }
 
-    public void sort(int inputArray[], int start, int end) {
+    public void sort(Integer[] inputArray, int start, int end) {
         if (start < end) {
             int mid = (start + end) / 2;
             sort(inputArray, start, mid);
@@ -16,8 +16,8 @@ public class MergeSort {
         }
     }
 
-    public void merge(int inputArray[], int start, int mid, int end) {
-        int tempArray[] = new int[end - start + 1];
+    public void merge(Integer[] inputArray, int start, int mid, int end) {
+        int[] tempArray = new int[end - start + 1];
         int leftSlot = start;
         int rightSlot = mid + 1;
         int k = 0;
@@ -51,10 +51,10 @@ public class MergeSort {
     }
 
     public static void main(String[] args) {
-        int[] A = new int[]{9, 7, 3, 1, 6, 3, 2, 6, 11, 9, 2, 3, 0, 22, 100};
-//        int[] A = new int[]{9, 7, 10, 11};
+        Integer[] A = new Integer[]{9, 7, 3, 1, 6, 3, 2, 6, 11, 9, 2, 3, 0, 22, 100};
+//        Integer[] A = new Integer[]{9, 7, 10, 11};
         MergeSort mergeSort= new MergeSort();
         mergeSort.sort(A);
-        Arrays.stream(A).mapToObj(Integer::new).map(x -> x + ", ").forEach(System.out::print);
+//        Arrays.stream(A).mapToObj(Integer::new).map(x -> x + ", ").forEach(System.out::print);
     }
 }

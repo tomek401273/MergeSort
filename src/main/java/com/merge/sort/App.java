@@ -16,9 +16,10 @@ public class App {
         List<Integer[]> result = fileParser.parse(inputList);
         MergeSort mergeSort =new MergeSort();
         for (Integer[]line: result) {
-            int [] array= Arrays.stream(line).mapToInt(integer -> integer).toArray();
-            mergeSort.sort(array);
-            Arrays.stream(array).mapToObj(Integer::new).map(x -> x + ", ").forEach(System.out::print);
+//            int [] array= Arrays.stream(line).mapToInt(integer -> integer).toArray();
+            mergeSort.sort(line);
+//            System.out.println(line);
+            Arrays.stream(line).map(x -> x + ", ").forEach(System.out::print);
             System.out.println();
         }
     }
