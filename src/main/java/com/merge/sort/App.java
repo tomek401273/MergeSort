@@ -3,6 +3,7 @@ package com.merge.sort;
 import com.merge.sort.config.AppConfig;
 import com.merge.sort.file.reader.FileReader;
 import com.merge.sort.file.parser.FileParser;
+import com.merge.sort.file.writer.FileWriter;
 import com.merge.sort.service.MergeSort;
 
 import java.util.Arrays;
@@ -22,5 +23,7 @@ public class App {
             Arrays.stream(line).map(x -> x + ", ").forEach(System.out::print);
             System.out.println();
         }
+        FileWriter fileWriter= new FileWriter();
+        fileWriter.write(result, AppConfig.getOutputPath());
     }
 }

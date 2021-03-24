@@ -10,5 +10,9 @@ public class AppConfig {
         return inputFile.resolve("input/test/input-test1.txt");
     }
 
+    public static Path getOutputPath(){
+        return inputFile.resolve("output/test/output-test1.txt");
+    }
+
 
 }
