@@ -21,15 +21,12 @@ public class FileParser {
         Integer[] integers = new Integer[splits.length];
         for (int i = 0; i < splits.length; i++) {
             String split = splits[i];
-            if (numberValidator.isValid(split)){
+            if (numberValidator.isValid(split)) {
                 integers[i] = (Integer.valueOf(split));
-            }
-            else {
-                integers[i]=0;
+            } else {
+                integers[i] = 0;
             }
         }
         return integers;
     }
-
-
 }

@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FileWriter {
-    public void write(List<Integer[]> lines, Path path){
+    public void write(List<Integer[]> lines, Path path) {
         cleanOutputFile(path);
-        for (Integer[] line:lines) {
+        for (Integer[] line : lines) {
             String lineString = Arrays.stream(line).map(Object::toString).collect(Collectors.joining(", "));
-            lineString+="\n";
+            lineString += "\n";
             try {
                 Files.writeString(path, lineString, StandardOpenOption.APPEND);
             } catch (IOException e) {
@@ -22,7 +22,7 @@ public class FileWriter {
         }
     }
 
-    public void cleanOutputFile(Path path){
+    public void cleanOutputFile(Path path) {
         try {
             Files.writeString(path, "");
         } catch (IOException e) {

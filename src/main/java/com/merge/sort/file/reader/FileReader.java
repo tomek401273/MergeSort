@@ -8,7 +8,7 @@ import java.util.List;
 
 public class FileReader {
 
-    public List<String> getInputLines(Path inputFilePath){
+    public List<String> getInputLines(Path inputFilePath) {
         List<String> lines = new ArrayList<>();
         try {
             lines = Files.readAllLines(inputFilePath);

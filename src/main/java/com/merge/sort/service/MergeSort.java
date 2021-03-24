@@ -1,5 +1,4 @@
 package com.merge.sort.service;
-import java.util.Arrays;
 
 public class MergeSort {
 
@@ -48,13 +47,5 @@ public class MergeSort {
             inputArray[i + start] = tempArray[i];
         }
 
-    }
-
-    public static void main(String[] args) {
-        Integer[] A = new Integer[]{9, 7, 3, 1, 6, 3, 2, 6, 11, 9, 2, 3, 0, 22, 100};
-//        Integer[] A = new Integer[]{9, 7, 10, 11};
-        MergeSort mergeSort= new MergeSort();
-        mergeSort.sort(A);
-//        Arrays.stream(A).mapToObj(Integer::new).map(x -> x + ", ").forEach(System.out::print);
     }
 }
