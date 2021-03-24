@@ -3,6 +3,7 @@ package com.merge.sort;
 import com.merge.sort.config.AppConfig;
 import com.merge.sort.file.reader.FileReader;
 import com.merge.sort.file.parser.FileParser;
+import com.merge.sort.file.validator.NumberValidator;
 import com.merge.sort.file.writer.FileWriter;
 import com.merge.sort.service.MergeSort;
 
