@@ -20,6 +20,9 @@ public class FileParserPerson {
 
         List<Person> personList = new ArrayList<>();
         for (String line : lines) {
+            // sprawdzenie czy linia jest poprawna
+            // jeśli tak zostanie sparsowana
+            // jesli nie zostanie pominięta
             if (lineValidator.isValid(line)) {
                 String[] splits = line.split("\t");
                 // parsowanie i dodanie do listy nowego obieku Person
