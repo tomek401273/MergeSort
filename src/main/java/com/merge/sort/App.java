@@ -7,32 +7,30 @@ import com.merge.sort.file.writer.FileWriterPerson;
 import com.merge.sort.model.Person;
 import com.merge.sort.service.ComparatorPerson;
 import com.merge.sort.service.MergeSortPerson;
+import com.merge.sort.service.SortPersonFieldComparatorMap;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class App {
     public static void main(String[] args) {
+        String sortOrder = "age asc"; // wczytaj tą zmienną ze skanera
         AppConfig.setInputFilePath("input/test/input-person-list.txt");
         AppConfig.setOutputFilePath("output/test/output-test1.txt");
 
         FileReader fileReader = new FileReader();
         List<String> inputList = fileReader.getInputLines(AppConfig.getInputFilePath());
-        inputList.forEach(s -> System.out.println(s));
-        FileParserPerson fileParserPerson= new FileParserPerson();
-        List<Person> people= fileParserPerson.parse(inputList);
+
+        FileParserPerson fileParserPerson = new FileParserPerson();
+        List<Person> people = fileParserPerson.parse(inputList);
         MergeSortPerson mergeSortPerson = new MergeSortPerson();
-        Map<String, ComparatorPerson> map =new HashMap<>();
-        map.put("age asc", (person1, person2) -> person1.getAge().compareTo(person2.getAge())<0);
-        map.put("name asc", (person1, person2) -> person1.getName().compareTo(person2.getName()) < 0);
-        ComparatorPerson comparatorPerson = map.get("age asc") ;
-//        ComparatorPerson comparatorPerson = map.get("name asc") ;
+
+        SortPersonFieldComparatorMap sortPersonFieldComparatorMap = new SortPersonFieldComparatorMap();
+        ComparatorPerson comparatorPerson = sortPersonFieldComparatorMap.getComparatorMap().get(sortOrder);
 
         mergeSortPerson.sort(people, comparatorPerson);
-        people.forEach(person -> System.out.println(person));
 
-        FileWriterPerson fileWriterPerson =new FileWriterPerson();
+
+        FileWriterPerson fileWriterPerson = new FileWriterPerson();
         fileWriterPerson.write(people, AppConfig.getOutputPath());
     }
 }
