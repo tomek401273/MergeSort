@@ -50,5 +50,19 @@ public class App {
 
         FileWriterPerson fileWriterPerson = new FileWriterPerson();
         fileWriterPerson.write(people, appConfig.getOutputFilePath());
+
+        // sprawdż wszszystko dokładnie komentarze są tam gdzie jest coś trugdniejszego
+        // banalnych rzeczy nie komętaowałem
+        // zrob testy
+        // wyrzuć junit tesety (folder test/java) jeśli nie potrzebne  oraz
+        // wtedy też to
+        //     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+        //    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+        // w build gradle
+        // aa i przed oddaniem spawdź czy jest ukryty folder .git jak jest to usuń to bo
+        // tam moga być informacje kto to pisał
+        // sprawdź jeszcze raz czy nie ma czegoś niepotrzebnego
+
+
     }
 }
