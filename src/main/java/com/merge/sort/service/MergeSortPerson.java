@@ -19,14 +19,21 @@ public class MergeSortPerson {
             merge(inputArray, start, mid, end, comparatorPerson);
         }
     }
-
+// to jest prawie to samo co ostanio są 2 główne rożnice
+    // 1) działa to na List<Person> zamiast na array Integerów lub array int już nie pamiętam co było
     public void merge(List<Person> inputArray, int start, int mid, int end, ComparatorPerson comparatorPerson) {
         List<Person> tempArray = new ArrayList<>(end - start + 1);
         int leftSlot = start;
         int rightSlot = mid + 1;
         int k = 0;
-
         while (leftSlot <= mid && rightSlot <= end) {
+            // tuaj zamiast porównywać integery prównujemy persons ich wartości
+            // wywołujemy to na comparatorPerson
+            // wtedy było to jakoś tak inputArray[leftslot]<inputArray[rightSlot]
+            // teraz wywołujemy comparatorPerson.compare
+            // i przekazujemy jej odpowiedznie obiekty typu Person
+            // inputArray.get(leftSlot) wtedyt obył integer (lub int) z array teraz to jest objekt typu Person z List
+            // i tak analogicznie z drugim argumentem
             if (comparatorPerson.compare(inputArray.get(leftSlot), inputArray.get(rightSlot))) {
                 tempArray.add(k, inputArray.get(leftSlot));
                 leftSlot++;

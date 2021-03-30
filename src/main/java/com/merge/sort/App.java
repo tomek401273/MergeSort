@@ -13,6 +13,13 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) {
+        // wyświtl info o potrzebie wskazania gdzie jest plik wejściowy i wyściowy
+        // oraz w jakim formacie powinien być plik
+        // oraz w jakim formacie dane w tym pliku
+        // oraz powdz że moze wpisać pole po jakim ma byc srotowne id, name etc. potem ma być spacja
+        // oraz oraz jak ma być sortowane asc czy desc
+        // bez tej poprawnie zainjcaizowanej tej zmiennej program nie powinien ruszyć
+        // etc.
         String sortOrder = "age asc"; // wczytaj tą zmienną ze skanera
         String inputFileString= "input/test/input-person-list.txt"; // wczytaj tą zmienną ze skanera
         String outputFileString ="output/test/output-test1.txt"; // wczytaj tą zmienną ze skanera
@@ -25,18 +32,21 @@ public class App {
             System.out.println("Program can not continue without valid file");
             System.exit(0);
         }
+
+        SortPersonFieldComparatorMap sortPersonFieldComparatorMap = new SortPersonFieldComparatorMap();
+        ComparatorPerson comparatorPerson = sortPersonFieldComparatorMap.getComparatorMap().get(sortOrder);
+        if (comparatorPerson==null){
+            System.out.println("Program can not continue without valid sort order field and (asc or desc)");
+            System.exit(0);
+        }
+
         FileReader fileReader = new FileReader();
         List<String> inputList = fileReader.getInputLines(appConfig.getInputFilePath());
 
         FileParserPerson fileParserPerson = new FileParserPerson();
         List<Person> people = fileParserPerson.parse(inputList);
         MergeSortPerson mergeSortPerson = new MergeSortPerson();
-
-        SortPersonFieldComparatorMap sortPersonFieldComparatorMap = new SortPersonFieldComparatorMap();
-        ComparatorPerson comparatorPerson = sortPersonFieldComparatorMap.getComparatorMap().get(sortOrder);
-
         mergeSortPerson.sort(people, comparatorPerson);
-
 
         FileWriterPerson fileWriterPerson = new FileWriterPerson();
         fileWriterPerson.write(people, appConfig.getOutputFilePath());

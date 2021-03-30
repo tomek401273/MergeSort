@@ -17,4 +17,15 @@ public class SortPersonFieldComparatorMap {
         map.put("surname desc", (person1, person2) -> person1.getSurname().compareTo(person2.getSurname()) > 0);
         return map;
     }
+
+    // to jest dość skoplikowane bo nie znasz functionalInterface oraz lambda expresions
+    // w skócie mamy mapę w której są Stringi oraz obiekty typu ComparatorPerson
+    // na podstawie String kóry przekaże user np. id asc jest zracany odpowiedni ComparatorPerson
+    // ComparatorPerson to jest interface który ma jedną metodę  boolean compare(Person person1, Person person2);
+    // przyjmuje ona dwa objekty typu Person
+    // zraca boolean z ich porównania
+    // implementacje tej metody to wartości w mapie czyli to: (person1, person2) -> person1.getAge().compareTo(person2.getAge()) < 0)
+    // mamy person1 i person2 bierzemy z pierwszej age wywołujemy metodę comareTo mają ją Stringi oraz Integery
+    // i przekazujemy do comapareTo age z person2
+    // można by tą mapę załatwić ifami ale tak jest o wiele ładniej
 }
