@@ -30,11 +30,12 @@ public class AppConfig {
     public Path getOutputFilePath() {
         return outputFilePath;
     }
-    public boolean isAppConfigValid(){
-        if (!inputFileCorrect){
+
+    public boolean isAppConfigValid() {
+        if (!inputFileCorrect) {
             System.out.println("Dear user input file does not exist!");
         }
-        if (!outputFileCorrect){
+        if (!outputFileCorrect) {
             System.out.println("Dear user out file does not exist!");
         }
         return inputFileCorrect && outputFileCorrect;

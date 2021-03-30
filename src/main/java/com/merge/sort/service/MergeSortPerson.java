@@ -21,13 +21,13 @@ public class MergeSortPerson {
     }
 
     public void merge(List<Person> inputArray, int start, int mid, int end, ComparatorPerson comparatorPerson) {
-        List<Person> tempArray = new ArrayList<>(end-start+1);
+        List<Person> tempArray = new ArrayList<>(end - start + 1);
         int leftSlot = start;
         int rightSlot = mid + 1;
         int k = 0;
 
         while (leftSlot <= mid && rightSlot <= end) {
-            if (comparatorPerson.compare(inputArray.get(leftSlot), inputArray.get(rightSlot))){
+            if (comparatorPerson.compare(inputArray.get(leftSlot), inputArray.get(rightSlot))) {
                 tempArray.add(k, inputArray.get(leftSlot));
                 leftSlot++;
             } else {
@@ -49,7 +49,7 @@ public class MergeSortPerson {
         }
 
         for (int i = 0; i < tempArray.size(); i++) {
-            inputArray.set(i+start, tempArray.get(i));
+            inputArray.set(i + start, tempArray.get(i));
         }
 
     }

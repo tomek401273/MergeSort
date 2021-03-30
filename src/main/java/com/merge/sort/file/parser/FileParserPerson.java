@@ -13,7 +13,7 @@ public class FileParserPerson {
 
     public FileParserPerson() {
         this.numberValidator = new NumberValidator();
-        this.lineValidator= new LineValidator();
+        this.lineValidator = new LineValidator();
     }
 
     public List<Person> parse(List<String> lines) {
@@ -36,23 +36,23 @@ public class FileParserPerson {
         // wyciągniecie splitów do zmiennych typu String
         String idString = splits[0].trim();
         String name = splits[1].trim();
-        String surname= splits[2].trim();
-        String ageString= splits[3].trim();
+        String surname = splits[2].trim();
+        String ageString = splits[3].trim();
         // sprawdzenie czy id jest poprawna liczbą
         // jesli tak sparsowanie jej
         // jeśli nie zmienna ma wartość zero
-        int id=0;
-        if (numberValidator.isValid(idString)){
-            id= Integer.parseInt(idString);
+        int id = 0;
+        if (numberValidator.isValid(idString)) {
+            id = Integer.parseInt(idString);
         }
         // sprawdzenie czy age jest poprawna liczbą
         // jesli tak sparsowanie jej
         // jeśli nie zmienna ma wartość zero
-        int age=0;
-        if (numberValidator.isValid(ageString)){
-            age=Integer.parseInt(ageString);
+        int age = 0;
+        if (numberValidator.isValid(ageString)) {
+            age = Integer.parseInt(ageString);
         }
         // inicjaliacja obieku Person
-        return new Person(id, name , surname, age);
+        return new Person(id, name, surname, age);
     }
 }
