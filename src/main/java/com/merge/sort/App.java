@@ -14,11 +14,19 @@ import java.util.List;
 public class App {
     public static void main(String[] args) {
         String sortOrder = "age asc"; // wczytaj tą zmienną ze skanera
-        AppConfig.setInputFilePath("input/test/input-person-list.txt");
-        AppConfig.setOutputFilePath("output/test/output-test1.txt");
+        String inputFileString= "input/test/input-person-list.txt"; // wczytaj tą zmienną ze skanera
+        String outputFileString ="output/test/output-test1.txt"; // wczytaj tą zmienną ze skanera
 
+        // inicjalizacja appConfig
+        AppConfig appConfig= new AppConfig(inputFileString, outputFileString);
+        // sprawdznie czy appConfig jest porpawnie zainicajliowany jeśli
+        // jeśli nie powiadom usera oraz zamnknij program
+        if (!appConfig.isAppConfigValid()){
+            System.out.println("Program can not continue without valid file");
+            System.exit(0);
+        }
         FileReader fileReader = new FileReader();
-        List<String> inputList = fileReader.getInputLines(AppConfig.getInputFilePath());
+        List<String> inputList = fileReader.getInputLines(appConfig.getInputFilePath());
 
         FileParserPerson fileParserPerson = new FileParserPerson();
         List<Person> people = fileParserPerson.parse(inputList);
@@ -31,6 +39,6 @@ public class App {
 
 
         FileWriterPerson fileWriterPerson = new FileWriterPerson();
-        fileWriterPerson.write(people, AppConfig.getOutputPath());
+        fileWriterPerson.write(people, appConfig.getOutputFilePath());
     }
 }

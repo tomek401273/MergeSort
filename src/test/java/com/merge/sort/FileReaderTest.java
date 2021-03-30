@@ -11,8 +11,11 @@ import java.util.List;
 class FileReaderTest {
     @Test
     public void readTestLines(){
-        AppConfig.setInputFilePath("input/test/input-test1.txt");
-        Path pathToFile= AppConfig.getInputFilePath();
+        String inputFileString= "input/test/input-person-list.txt";
+        String outputFileString ="output/test/output-test1.txt";
+        AppConfig appConfig= new AppConfig(inputFileString, outputFileString);
+
+        Path pathToFile= appConfig.getInputFilePath();
         FileReader fileReader = new FileReader();
         List<String> lines= fileReader.getInputLines(pathToFile);
         for (int i = 0; i < lines.size(); i++) {
