@@ -5,7 +5,6 @@
 5	Jacek	Zenowski	42
 6	Paweł	Pawelski	30
 7	Janusz	Handlarz	61
-8	Alicja	Adamska		45
+8	Alicja	Adamska	45
 9	Genowefa	Pigwa	100
 10	Dionizy	Derm	95
-

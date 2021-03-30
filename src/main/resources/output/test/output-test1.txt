@@ -1,3 +1,10 @@
-1, 5, 10, 12, 14, 16, 20, 25
-1, 2, 5, 7, 10, 15, 22, 40
-1, 12, 12, 101
+3 	Krystian 	Jaroszek 	21 	
+6 	Paweł 	Pawelski 	30 	
+1 	Jan 	Kowalski 	40 	
+5 	Jacek 	Zenowski 	42 	
+8 	Alicja 	Adamska 	45 	
+2 	Zdzisław 	Nowak 	56 	
+7 	Janusz 	Handlarz 	61 	
+4 	Adam 	Matusiak 	65 	
+10 	Dionizy 	Derm 	95 	
+9 	Genowefa 	Pigwa 	100 	
