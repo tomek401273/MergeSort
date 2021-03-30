@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileParserPerson {
-    public Person[] parse(List<String> lines) {
+    public List<Person> parse(List<String> lines) {
         NumberValidator numberValidator = new NumberValidator();
         List<Person> personList= new ArrayList<>();
         for (String line : lines) {
@@ -15,12 +15,7 @@ public class FileParserPerson {
             System.out.println(line);
             personList.add(parseLine(splits, numberValidator));
         }
-        Person[] people= new Person[personList.size()];
-        for (int i = 0; i <personList.size() ; i++) {
-
-            people[i]=personList.get(i);
-        }
-        return people;
+       return personList;
     }
 
     public Person parseLine(String[] splits, NumberValidator numberValidator) {

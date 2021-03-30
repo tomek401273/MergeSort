@@ -2,13 +2,16 @@ package com.merge.sort.service;
 
 import com.merge.sort.model.Person;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MergeSortPerson {
 
-    public void sort(Person[] inputArray, ComparatorPerson comparatorPerson) {
-        sort(inputArray, 0, inputArray.length - 1, comparatorPerson);
+    public void sort(List<Person> inputArray, ComparatorPerson comparatorPerson) {
+        sort(inputArray, 0, inputArray.size() - 1, comparatorPerson);
     }
 
-    public void sort(Person[] inputArray, int start, int end, ComparatorPerson comparatorPerson) {
+    public void sort(List<Person> inputArray, int start, int end, ComparatorPerson comparatorPerson) {
         if (start < end) {
             int mid = (start + end) / 2;
             sort(inputArray, start, mid, comparatorPerson);
@@ -17,36 +20,36 @@ public class MergeSortPerson {
         }
     }
 
-    public void merge(Person[] inputArray, int start, int mid, int end, ComparatorPerson comparatorPerson) {
-        Person[] tempArray = new Person[end - start + 1];
+    public void merge(List<Person> inputArray, int start, int mid, int end, ComparatorPerson comparatorPerson) {
+        List<Person> tempArray = new ArrayList<>(end-start+1);
         int leftSlot = start;
         int rightSlot = mid + 1;
         int k = 0;
 
         while (leftSlot <= mid && rightSlot <= end) {
-            if (comparatorPerson.compare(inputArray[leftSlot], inputArray[rightSlot])){
-                tempArray[k] = inputArray[leftSlot];
+            if (comparatorPerson.compare(inputArray.get(leftSlot), inputArray.get(rightSlot))){
+                tempArray.add(k, inputArray.get(leftSlot));
                 leftSlot++;
             } else {
-                tempArray[k] = inputArray[rightSlot];
+                tempArray.add(k, inputArray.get(rightSlot));
                 rightSlot++;
             }
             k++;
         }
 
         while (leftSlot <= mid) {
-            tempArray[k] = inputArray[leftSlot];
+            tempArray.add(k, inputArray.get(leftSlot));
             leftSlot++;
             k++;
         }
         while (rightSlot <= end) {
-            tempArray[k] = inputArray[rightSlot];
+            tempArray.add(k, inputArray.get(rightSlot));
             rightSlot++;
             k++;
         }
 
-        for (int i = 0; i < tempArray.length; i++) {
-            inputArray[i + start] = tempArray[i];
+        for (int i = 0; i < tempArray.size(); i++) {
+            inputArray.set(i+start, tempArray.get(i));
         }
 
     }

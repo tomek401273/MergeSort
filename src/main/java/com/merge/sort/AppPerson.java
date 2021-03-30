@@ -22,7 +22,7 @@ public class AppPerson {
         List<String> inputList = fileReader.getInputLines(AppConfig.getInputFilePath());
         inputList.forEach(s -> System.out.println(s));
         FileParserPerson fileParserPerson= new FileParserPerson();
-        Person[] people= fileParserPerson.parse(inputList);
+        List<Person> people= fileParserPerson.parse(inputList);
         MergeSortPerson mergeSortPerson = new MergeSortPerson();
         Map<String, ComparatorPerson> map =new HashMap<>();
         map.put("age asc", (person1, person2) -> person1.getAge().compareTo(person2.getAge())<0);
@@ -31,10 +31,10 @@ public class AppPerson {
 //        ComparatorPerson comparatorPerson = map.get("name asc") ;
 
         mergeSortPerson.sort(people, comparatorPerson);
-        Arrays.stream(people).forEach(person -> System.out.println(person));
+        people.forEach(person -> System.out.println(person));
 
         FileWriterPerson fileWriterPerson =new FileWriterPerson();
-        fileWriterPerson.write(Arrays.asList(people), AppConfig.getOutputPath());
+        fileWriterPerson.write(people, AppConfig.getOutputPath());
 
     }
 }
