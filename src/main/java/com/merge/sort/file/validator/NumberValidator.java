@@ -3,9 +3,10 @@ package com.merge.sort.file.validator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class NumberValidator {
-    Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+public class NumberValidator implements Validator {
+    Pattern pattern = Pattern.compile("^\\d+$");
 
+    @Override
     public boolean isValid(String text) {
         Matcher matcher = pattern.matcher(text);
         boolean isValid = matcher.find();

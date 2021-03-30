@@ -1,5 +1,6 @@
 package com.merge.sort.file.parser;
 
+import com.merge.sort.file.validator.LineValidator;
 import com.merge.sort.file.validator.NumberValidator;
 import com.merge.sort.model.Person;
 
@@ -7,18 +8,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileParserPerson {
-    public List<Person> parse(List<String> lines) {
-        NumberValidator numberValidator = new NumberValidator();
-        List<Person> personList= new ArrayList<>();
-        for (String line : lines) {
-            String[] splits = line.split("\t");
-            System.out.println(line);
-            personList.add(parseLine(splits, numberValidator));
-        }
-       return personList;
+    private final NumberValidator numberValidator;
+    private final LineValidator lineValidator;
+
+    public FileParserPerson() {
+        this.numberValidator = new NumberValidator();
+        this.lineValidator= new LineValidator();
     }
 
-    public Person parseLine(String[] splits, NumberValidator numberValidator) {
-        return new Person(Integer.valueOf(splits[0].trim()), splits[1].trim(), splits[2].trim(), Integer.valueOf(splits[3].trim()));
+    public List<Person> parse(List<String> lines) {
+
+        List<Person> personList = new ArrayList<>();
+        for (String line : lines) {
+            if (lineValidator.isValid(line)) {
+                String[] splits = line.split("\t");
+                // parsowanie i dodanie do listy nowego obieku Person
+                personList.add(parseLine(splits));
+            }
+        }
+        return personList;
+    }
+
+    public Person parseLine(String[] splits) {
+        // wyciągniecie splitów do zmiennych typu String
+        String idString = splits[0].trim();
+        String name = splits[1].trim();
+        String surname= splits[2].trim();
+        String ageString= splits[3].trim();
+        // sprawdzenie czy id jest poprawna liczbą
+        // jesli tak sparsowanie jej
+        // jeśli nie zmienna ma wartość zero
+        int id=0;
+        if (numberValidator.isValid(idString)){
+            id= Integer.parseInt(idString);
+        }
+        // sprawdzenie czy age jest poprawna liczbą
+        // jesli tak sparsowanie jej
+        // jeśli nie zmienna ma wartość zero
+        int age=0;
+        if (numberValidator.isValid(ageString)){
+            age=Integer.parseInt(ageString);
+        }
+        // inicjaliacja obieku Person
+        return new Person(id, name , surname, age);
     }
 }
